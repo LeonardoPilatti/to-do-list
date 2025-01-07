@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  transform: translateY(-50%);
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--gray-500);
+    border-radius: 8px;
+    border: none;
+    color: var(--gray-100);
+  }
+
+  input::placeholder {
+    color: var(--gray-300);
+  }
+
+  input:hover,
+  input:focus {
+    border: 1px solid var(--purple-dark);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    gap: 0.5rem;
+    background-color: var(--blue-dark);
+    padding: 1rem;
+    cursor: pointer;
+    color: var(--gray-100);
+    border: none;
+  }
+
+  button:hover {
+    background-color: var(--blue);
+  }
+
+  button:disabled {
+    background-color: var(--gray-500);
+    cursor: not-allowed;
+  }
+}

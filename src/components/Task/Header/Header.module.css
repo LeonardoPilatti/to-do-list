@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+
+  aside {
+    display: flex;
+    gap: 0.5rem;
+
+    p {
+      color: var(--blue);
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+
+    .purple {
+      color: var(--purple);
+    }
+  }
+}

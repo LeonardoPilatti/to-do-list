@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import { Header } from './components/Header';
 import { AddTask } from './components/Task/AddTask';
+import { Header as TaskHeader } from './components/Task/Header';
+import { Empty } from './components/Task/Empty';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,6 +15,8 @@ function App() {
       <Header />
       <section className={S.container}>
         <AddTask />
+        <TaskHeader />
+        <Empty />
       </section>
     </main>
   );

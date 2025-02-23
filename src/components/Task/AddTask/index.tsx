@@ -1,9 +1,9 @@
 import { PlusCircle } from '@phosphor-icons/react';
-import * as S from './Addtask.module.css';
+import styles from './Addtask.module.css';
 
 export const AddTask = () => {
   return (
-    <div className={S.container}>
+    <div className={styles.container}>
       <input type="text" placeholder="Adicione uma nova tarefa" />
       <button>
         <span>Criar</span>

@@ -1,4 +1,4 @@
-import * as S from './App.module.css';
+import styles from './App.module.css';
 
 import { useState } from 'react';
 
@@ -22,7 +22,7 @@ export function App() {
   return (
     <main>
       <Header />
-      <section className={S.container}>
+      <section className={styles.container}>
         <AddTask />
         <TaskHeader />
         {tasks.length > 0 ? (

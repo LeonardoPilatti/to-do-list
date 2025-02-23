@@ -1,5 +1,5 @@
 import { Check, Trash } from '@phosphor-icons/react';
-import * as S from './Item.module.css';
+import styles from './Item.module.css';
 import { ITask } from '../../../App';
 
 interface IItem {
@@ -8,21 +8,21 @@ interface IItem {
 
 export const Item = ({ task }: IItem) => {
   const checkboxCheckedClassname = task.completed
-    ? S['checkbox-checked']
-    : S['checkbox-unchecked'];
+    ? styles['checkbox-checked']
+    : styles['checkbox-unchecked'];
   const paragraphCheckedClassname = task.completed
-    ? S['paragraph-checked']
+    ? styles['paragraph-checked']
     : '';
 
   return (
-    <div className={S.container}>
+    <div className={styles.container}>
       <div>
         <label htmlFor="checkbox">
           <input type="checkbox" readOnly checked={task.completed} />
-          <span className={`${S.checkbox} ${checkboxCheckedClassname}`}>
+          <span className={`${styles.checkbox} ${checkboxCheckedClassname}`}>
             {task.completed && <Check size={12} />}
           </span>
-          <p className={`${S.paragraph} ${paragraphCheckedClassname}`}>
+          <p className={`${styles.paragraph} ${paragraphCheckedClassname}`}>
             {task.text}
           </p>
         </label>

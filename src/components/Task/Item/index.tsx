@@ -4,30 +4,42 @@ import { ITask } from '../../../App';
 
 interface IItem {
   task: ITask;
+  removeTask: (id: number) => void;
+  toggleTaskStatus: ({ id, value }: { id: number; value: boolean }) => void;
 }
 
-export const Item = ({ task }: IItem) => {
+export const Item = ({ task, toggleTaskStatus, removeTask }: IItem) => {
+  function handleTaskToggle() {
+    toggleTaskStatus({ id: task.id, value: !task.completed });
+  }
+
+  function handleRemove() {
+    removeTask(task.id);
+  }
+
   const checkboxCheckedClassname = task.completed
-    ? styles['checkbox-checked']
-    : styles['checkbox-unchecked'];
+    ? styles['checkboxChecked']
+    : styles['checkboxUnchecked'];
   const paragraphCheckedClassname = task.completed
-    ? styles['paragraph-checked']
+    ? styles['paragraphChecked']
     : '';
 
   return (
     <div className={styles.container}>
       <div>
-        <label htmlFor="checkbox">
-          <input type="checkbox" readOnly checked={task.completed} />
+        <label htmlFor="checkbox" onClick={handleTaskToggle}>
+          <input readOnly type="checkbox" checked={task.completed} />
           <span className={`${styles.checkbox} ${checkboxCheckedClassname}`}>
             {task.completed && <Check size={12} />}
           </span>
+
           <p className={`${styles.paragraph} ${paragraphCheckedClassname}`}>
             {task.text}
           </p>
         </label>
       </div>
-      <button>
+
+      <button onClick={handleRemove}>
         <Trash size={16} color="#808080" />
       </button>
     </div>

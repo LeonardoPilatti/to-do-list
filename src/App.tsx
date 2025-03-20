@@ -52,7 +52,7 @@ export function App() {
       <Header />
       <section className={styles.container}>
         <AddTask setTasks={setTasks} />
-        <TaskHeader />
+        <TaskHeader tasksCompleted={checkedTasksCounter} totalTasks={tasks.length}/>
         {tasks.length > 0 ? (
           <div className={styles.taskContainer}>
             {tasks.map((task) => (

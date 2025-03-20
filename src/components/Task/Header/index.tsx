@@ -1,15 +1,20 @@
 import styles from './Header.module.css';
 
-export const Header = () => {
+type HeaderType = {
+  totalTasks: number;
+  tasksCompleted: number;
+}
+
+export const Header = ({totalTasks, tasksCompleted}: HeaderType) => {
   return (
     <header className={styles.header}>
       <aside>
         <p>Tarefas criadas</p>
-        <span>0</span>
+        <span>{totalTasks}</span>
       </aside>
       <aside>
         <p className={styles.purple}>Concluídas</p>
-        <span>0</span>
+        <span>{tasksCompleted}</span>
       </aside>
     </header>
   );

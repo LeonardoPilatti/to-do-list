@@ -17,8 +17,10 @@ type AddTaskProps = {
 
 export const AddTask = ({ setTasks }: AddTaskProps) => {
   const [inputValue, setInputValue] = useState('');
+  const btnDescription = "Clique para adicionar uma tarefa";
 
-  function handleAddTask() {
+  function handleAddTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     if (!inputValue) {
       return;
     }
@@ -35,16 +37,18 @@ export const AddTask = ({ setTasks }: AddTaskProps) => {
 
   return (
     <div className={styles.container}>
+      <form onSubmit={handleAddTask}>
       <input
         type="text"
         placeholder="Adicione uma nova tarefa"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <button onClick={handleAddTask}>
+      <button type='submit' aria-label={btnDescription} title={btnDescription}>
         <span>Criar</span>
         <PlusCircle size={16} color="#f2f2f2" weight="bold" />
       </button>
+      </form>
     </div>
   );
 };

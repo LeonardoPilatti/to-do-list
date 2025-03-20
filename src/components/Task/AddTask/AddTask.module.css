@@ -4,6 +4,12 @@
   gap: 0.5rem;
   transform: translateY(-50%);
 
+  form {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+  }
+
   input {
     width: 100%;
     padding: 1rem;

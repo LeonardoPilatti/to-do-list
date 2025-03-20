@@ -57,6 +57,7 @@ export function App() {
           <div className={styles.taskContainer}>
             {tasks.map((task) => (
               <Item
+                key={task.id}
                 task={task}
                 toggleTaskStatus={handleToggleTask}
                 removeTask={handleRemoveTask}

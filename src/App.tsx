@@ -1,4 +1,4 @@
-import * as S from './App.module.css';
+import styles from './App.module.css';
 
 import { useState } from 'react';
 
@@ -15,20 +15,53 @@ export interface ITask {
 }
 
 export function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'Primeira tarefa', completed: false },
-  ]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  const checkedTasksCounter = tasks.reduce((prevValue, currentTask) => {
+    if (currentTask.completed) {
+      return prevValue + 1;
+    }
+
+    return prevValue;
+  }, 0);
+
+  function handleRemoveTask(id: number) {
+    const filteredTasks = tasks.filter((task) => task.id !== id);
+
+    if (!confirm('Deseja mesmo apagar essa tarefa?')) {
+      return;
+    }
+
+    setTasks(filteredTasks);
+  }
+
+  function handleToggleTask({ id, value }: { id: number; value: boolean }) {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, completed: value };
+      }
+
+      return { ...task };
+    });
+
+    setTasks(updatedTasks);
+  }
 
   return (
     <main>
       <Header />
-      <section className={S.container}>
-        <AddTask />
+      <section className={styles.container}>
+        <AddTask setTasks={setTasks} />
         <TaskHeader />
         {tasks.length > 0 ? (
-          <div>
+          <div className={styles.taskContainer}>
             {tasks.map((task) => (
-              <Item task={task} />
+              <Item
+                key={task.id}
+                task={task}
+                toggleTaskStatus={handleToggleTask}
+                removeTask={handleRemoveTask}
+              />
             ))}
           </div>
         ) : (

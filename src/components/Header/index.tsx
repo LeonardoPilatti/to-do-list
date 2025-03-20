@@ -1,8 +1,8 @@
-import * as S from './Header.module.css';
+import styles from './Header.module.css';
 
 export const Header = () => {
   return (
-    <header className={S.header}>
+    <header className={styles.header}>
       <img src="/logo.svg" alt="Logo do projeto to do list" />
     </header>
   );
